@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalize Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/37df75b44e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.0.0/introjs.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        .ui-datepicker { z-index: 10000 !important; }
+    </style>
+</head>
+<body>
+    <p class="warn">Website does not supported in mobile device view</p>
+    <div class="container my-4">
+        <div class="row align-items-center mb-4" style="justify-content: space-between;">
+            <div class="col-md-4">
+                <span id="fileNameDisplay" class="filename">file_name</span><span class="ext">.xlsx</span>
+            </div>
+            <div class="col-md-4 text-right">
+                <label class="switch">
+                    <input type="checkbox" class="chk">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <input type="text" id="searchTasks" class="form-control" placeholder="Search tasks...">
+            </div>
+            <div class="col-md-6 text-right">
+                <!-- &nbsp;<span><i class="fa-solid fa-circle-plus"></i> -->
+                <button id="addTaskBtn" class="btn btn-primary" title="Add Task"><span><i class="fa-solid fa-circle-plus"></i></span></button>
+                <!-- &nbsp;<span><i class="fa-solid fa-filter"></i> -->
+                <button id="filterTasksBtn" class="btn btn-secondary" title="Filter"><span><i class="fa-solid fa-filter"></i></span></button>
+                <!-- &nbsp;<span><i class="fa-solid fa-rotate-left"></i></span> -->
+                <button id="undoBtn" class="btn" style="background-color: rgb(124 58 237); color: #fff;" title="Undo"><span><i class="fa-solid fa-rotate-left"></i></span></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="section-heading" style="background-color: rgb(104 50 199);">
+                    To Do <span id="todoCount" class="task-count" title="Task Count">0</span>
+                </div>
+                <div id="toDo" class="task-column"></div>
+            </div>
+            <div class="col-md-4">
+                <div class="section-heading" style="background-color: rgb(104 50 199);">
+                    In Progress <span id="inProgressCount" class="task-count" title="Task Count">0</span>
+                </div>
+                <div id="inProgress" class="task-column"></div>
+            </div>
+            <div class="col-md-4">
+                <div class="section-heading" style="background-color: rgb(104 50 199);">
+                    Complete <span id="completeCount" class="task-count" title="Task Count">0</span>
+                </div>
+                <div id="complete" class="task-column"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="modal" data-intro="This is the modal where you can add or edit tasks.">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Task</h2>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskName">Task Name</label>
+                    <input type="text" class="form-control" id="taskName" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="taskDate">Date</label>
+                    <input type="date" class="form-control" id="taskDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskTime">Estimated Time (Optional)</label>
+                    <input type="text" class="form-control" id="taskTime">
+                </div>
+                <div class="form-group">
+                    <label for="taskStatus">Status</label><br>
+                    <input type="radio" id="todo" name="taskStatus" value="toDo" checked>
+                    <label for="todo">To Do</label>
+                    <input type="radio" id="inProgress" name="taskStatus" value="inProgress">
+                    <label for="inProgress">In Progress</label>
+                    <input type="radio" id="complete" name="taskStatus" value="complete">
+                    <label for="complete">Complete</label>
+                </div>
+                <div class="form-group">
+                    <label for="taskImage">Image (optional)</label>
+                    <input type="file" class="form-control-file" id="taskImage" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Description (optional)</label>
+                    <textarea class="form-control" id="taskDescription" autocomplete="off"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Done</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <!-- Task Details Modal -->
+    <div id="taskDetailsModal" class="modal" data-intro="Click on a task to view, edit, or delete it.">
+        <div class="modal-content">
+            <span class="close-details">&times;</span>
+            <h2>Task Details</h2>
+            <p id="taskDetailsContent"></p>
+            <div class="flexbox">
+                <button id="editTaskBtn" class="btn editDel"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button id="deleteTaskBtn" class="btn editDel"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tour Modal -->
+    <div id="tourModal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome to Your Dashboard</h2>
+            <p>Would you like to take a tour of the website?</p>
+            <div class="d-flex justify-content-center">
+                <button id="startTourBtn" class="btn btn-primary mr-2">Start Tour</button>
+                <button id="skipTourBtn" class="btn btn-secondary">Skip Tour</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rename Modal -->
+    <div id="renameModal" class="modal">
+        <div class="modal-content">
+            <span class="close-rename" style="text-align: right; cursor: pointer; color:rgb(254, 0, 0);"><i class="fa-regular fa-circle-xmark"></i></span>
+            <h2 style="color: #878787;">Rename File</h2>
+            <form id="renameForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="fileNameInput" value="file_name" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Rename</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteConfirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-delete-modal">&times;</span>
+            <h5 class="text-center mb-4">Are you sure you want to delete this task?</h5>
+            <div class="d-flex justify-content-center">
+                <button id="confirmDeleteBtn" class="btn btn-danger mr-2">Delete</button>
+                <button id="cancelDeleteBtn" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Modal -->
+    <div id="filterModal" class="modal">
+        <div class="modal-content">
+            <span class="close-filter">&times;</span>
+            <h2>Filter Tasks</h2>
+            <form id="filterForm">
+                <div class="form-group">
+                    <label for="startDate">Start Date:</label>
+                    <input type="text" id="startDate" class="form-control" placeholder="Select Start Date" required>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End Date:</label>
+                    <input type="text" id="endDate" class="form-control" placeholder="Select End Date" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <button type="button" id="clearFilterModalBtn" class="btn btn-secondary">Clear Filter</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="text-center">&copy; 2024 Prathamesh V. All Rights Reserved.</p>
+        </div>
+        <div class="bottom-right-buttons" data-intro="Export tasks to Excel or share via email.">
+            <button id="infoBtn" class="btn btn-dark" onclick="window.location.href='about.html';"><i class="fa-solid fa-circle-info"></i></button>
+            <button id="exportBtn" class="btn btn-dark"><i class="fa-solid fa-download"></i></button>
+            <button id="shareBtn" class="btn btn-dark"><i class="fa-solid fa-share-nodes"></i></button>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.0.0/intro.min.js"></script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=YOUR_KEY_HERE"></script>
+    <script src="script.js"></script>
+</body>
+</html>

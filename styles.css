@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* General styles */
+body {
+    background: #f9fafb;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col-md-4 {
+    padding: 0 15px;
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.filename, .ext {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #b3b3b3;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    background-color: rgb(124, 58, 237);
+}
+
+/* Filter Modal styles */
+#filterModal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+#filterModal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    position: relative;
+    top: 0;
+}
+
+.close-filter {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: rgb(124 58 237);
+    border-color: rgb(124 58 237);
+}
+
+.btn-primary:hover {
+    background-color: rgb(104 50 199);
+    border-color: rgb(104 50 199);
+}
+
+/* Dark theme styles */
+body.dark-theme #filterModal .modal-content {
+    background-color: #444;
+    color: #fff;
+}
+
+/* ------------------- */
+
+.task-count {
+    background: #fff;
+    color: #333;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.task-column {
+    background: transparent;
+    border-radius: 5px;
+    /* padding: 20px; */
+    min-height: 300px;
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+    margin-bottom: 20px;
+}
+
+.task-card {
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    position: relative;
+    transition: all 0.2s ease; 
+}
+
+.task-card .important {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    color: transparent;
+}
+
+.task-card .important.important-true {
+    color: rgb(135 66 255);
+}
+
+.task-card:active {
+    cursor: grabbing;
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.task-card .copy-task {
+    position: absolute;
+    top: 15px;
+    right: 40px; 
+    cursor: pointer;
+    /* color: rgb(135 66 255); */
+    color: #ced4da;
+}
+
+.task-card .copy-task:hover {
+    color: #303136;
+}
+
+input[name="taskStatus"] {
+    margin-left: 10px;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: rgb(124 58 237);
+    border-color: rgb(124 58 237);
+}
+
+.btn-primary:hover {
+    background-color: rgb(104 50 199);
+    border-color: rgb(104 50 199);
+}
+
+.btn-dark {
+    background-color: rgb(124 58 237);
+    border-color: rgb(124 58 237);
+}
+
+.btn-dark:hover {
+    background-color: rgb(104 50 199);
+    border-color: rgb(104 50 199);
+}
+
+.task-card .delete-task {
+    position: absolute;
+    top: 15px;
+    right: 65px; 
+    cursor: pointer;
+    color: #ced4da;
+}
+
+.task-card .delete-task:hover {
+    color: #939393;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.close-delete-modal {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close, .close-details, .close-rename {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Form styles */
+.form-control {
+    margin-bottom: 10px;
+}
+
+.form-group:nth-child(3) label{
+    margin-right: 10px;
+}
+
+/* Footer styles */
+.footer {
+    background-color: transparent;
+    padding: 0 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.footer .text-center {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    display: block;
+    --width-of-switch: 3.5em;
+    --height-of-switch: 2em;
+    /* size of sliding icon -- sun and moon */
+    --size-of-icon: 1.4em;
+    /* it is like a inline-padding of switch */
+    --slider-offset: 0.3em;
+    position: relative;
+    width: var(--width-of-switch);
+    height: var(--height-of-switch);
+    float: right;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    transition: .4s;
+    border-radius: 30px;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.1) inset;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: var(--size-of-icon,1.4em);
+    width: var(--size-of-icon,1.4em);
+    border-radius: 20px;
+    left: var(--slider-offset,0.3em);
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(40deg,#ff0080,#ff8c00 70%);
+    ;
+   transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #303136;
+  }
+  
+  input:checked + .slider:before {
+    left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
+    background: #303136;
+    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+  }
+
+/* ------------------ */
+
+.editDel{
+    background: #eee;
+}
+
+/* Dark theme styles */
+body.dark-theme {
+    background: #333;
+    color: #fff;
+}
+
+body.dark-theme .task-column {
+    background: transparent;
+    color: #fff;
+}
+
+body.dark-theme .task-card {
+    background: #555;
+}
+
+body.dark-theme .section-heading {
+    background-color: #666;
+}
+
+body.dark-theme .footer .text-center {
+    color: #ddd;
+}
+
+body.dark-theme .btn-primary,
+body.dark-theme .btn-dark {
+    background-color: #666;
+    border-color: #666;
+}
+
+body.dark-theme .btn-primary:hover,
+body.dark-theme .btn-dark:hover {
+    background-color: #555;
+    border-color: #555;
+}
+
+body.dark-theme .modal-content{
+    background-color: #444;
+}
+
+.bottom-right-buttons{
+    display: flex;
+    gap: 10px;
+}
+
+.warn{
+    display: none;
+}
+
+.btn.focus, .btn:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+@media screen and (max-width:600px) {
+    .container, .modal, footer{
+        opacity: 0;
+    }
+    .warn{
+        display: block;
+        padding-top: 50%;
+        text-align: center;
+    }
+}
+
+/* Custom scrollbar styles for WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(104, 50, 199); /* Background color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+    border: 3px solid #f1f1f1; /* Padding around the scrollbar thumb */
+}
+
+/* Scrollbar styles for Firefox */
+html {
+    scrollbar-width: thin; /* Thin scrollbar width */
+    scrollbar-color: rgb(184, 184, 184) #f1f1f1; /* Thumb and track colors */
+}
+
+/* Optional: Scrollbar styles for IE/Edge */
+body {
+    -ms-overflow-style: scrollbar; /* Show scrollbar for IE/Edge */
+}
+
+/* General scrollbar styling for other browsers */
+.scrollable-content {
+    overflow-y: scroll; /* Enable vertical scrolling */
+    scrollbar-color: rgb(104, 50, 199) #f1f1f1; /* Thumb and track colors */
+    scrollbar-width: thin; /* Thin scrollbar width */
+}
+
+h5{
+  font-size: 1rem;
+}

@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background-color: #6c63ff;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    position: relative;
+    color: #fff !important;
+    font-weight: 500;
+    margin: 0 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar .u::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    background-color: #fff;
+    width: 0;
+    bottom: 0;
+    left: 5px;
+    border-radius: 20px;
+    transition: all .5s;
+}
+
+.navbar .u:hover::after {
+    width: 80%;
+}
+
+.navbar a:hover {
+    color: #eeff00 !important;
+}
+
+.section {
+    padding: 60px 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.section h1 {
+    text-align: center;
+}
+
+#about {
+    background-color: #6c63ff;
+    text-align: center;
+}
+
+#vision {
+    background-color: #46438f;
+    text-align: center;
+}
+
+#mission {
+    background-color: #6c63ff;
+    text-align: center;
+}
+
+#developer {
+    background-color: #46438f;
+    text-align: center;
+}
+
+#projects {
+    background-color: #6c63ff;
+}
+
+#contact {
+    background-color: #46438f;
+}
+
+#projects .card {
+    color: #000;
+    text-align: left;
+    margin: 20px 0;
+    user-select: none;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+#projects .card:hover {
+    box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.5) !important;
+    transform: scale(1.05) !important;
+}
+
+.container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.container p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.social-icons {
+    position: fixed;
+    bottom: 20vh;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.social-icons a {
+    text-decoration: none;
+    margin: 5px 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #46438f;
+    transform: scale(1.2) !important;
+}
+
+.social-icons i {
+    font-size: 20px;
+}
+
+footer {
+    background-color: #46438f;
+    color: #fff;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 5px 0;
+    }
+
+    .section {
+        padding: 30px 0;
+    }
+
+    .container h1 {
+        font-size: 2rem;
+    }
+
+    .container p {
+        font-size: 1rem;
+    }
+}
+
+/* Custom scrollbar styles for WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(104, 50, 199); /* Background color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+    border: 3px solid #f1f1f1; /* Padding around the scrollbar thumb */
+}
+
+/* Scrollbar styles for Firefox */
+html {
+    scrollbar-width: thin; /* Thin scrollbar width */
+    scrollbar-color: rgb(184, 184, 184) #f1f1f1; /* Thumb and track colors */
+}
+
+/* Optional: Scrollbar styles for IE/Edge */
+body {
+    -ms-overflow-style: scrollbar; /* Show scrollbar for IE/Edge */
+}
+
+/* General scrollbar styling for other browsers */
+.scrollable-content {
+    overflow-y: scroll; /* Enable vertical scrolling */
+    scrollbar-color: rgb(104, 50, 199) #f1f1f1; /* Thumb and track colors */
+    scrollbar-width: thin; /* Thin scrollbar width */
+}
