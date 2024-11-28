@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* General styles */
+
 body {
     background: #f9fafb;
     font-family: "Poppins", sans-serif;
@@ -58,7 +58,6 @@ body {
     background-color: rgb(124, 58, 237);
 }
 
-/* Filter Modal styles */
 #filterModal {
     display: none;
     position: fixed;
@@ -92,24 +91,24 @@ body {
     cursor: pointer;
 }
 
-/* Button styles */
+
 .btn-primary {
-    background-color: rgb(124 58 237);
-    border-color: rgb(124 58 237);
+    background-color: rgb(24, 50, 156);
+    border-color: rgb(46, 17, 160);
 }
 
 .btn-primary:hover {
-    background-color: rgb(104 50 199);
-    border-color: rgb(104 50 199);
+    background-color: rgb(50, 55, 199);
+    border-color: rgb(13, 7, 90);
 }
 
-/* Dark theme styles */
+
 body.dark-theme #filterModal .modal-content {
-    background-color: #444;
+    background-color: #000000;
     color: #fff;
 }
 
-/* ------------------- */
+
 
 .task-count {
     background: #fff;
@@ -126,9 +125,9 @@ body.dark-theme #filterModal .modal-content {
 .task-column {
     background: transparent;
     border-radius: 5px;
-    /* padding: 20px; */
+     padding: 20px; 
     min-height: 300px;
-    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
     margin-bottom: 20px;
 }
 
@@ -153,7 +152,7 @@ body.dark-theme #filterModal .modal-content {
 }
 
 .task-card .important.important-true {
-    color: rgb(135 66 255);
+    color: rgb(40, 18, 200);
 }
 
 .task-card:active {
@@ -167,7 +166,7 @@ body.dark-theme #filterModal .modal-content {
     top: 15px;
     right: 40px; 
     cursor: pointer;
-    /* color: rgb(135 66 255); */
+     color: rgb(30, 30, 220); 
     color: #ced4da;
 }
 
@@ -179,25 +178,25 @@ input[name="taskStatus"] {
     margin-left: 10px;
 }
 
-/* Button styles */
+
 .btn-primary {
-    background-color: rgb(124 58 237);
-    border-color: rgb(124 58 237);
+    background-color: rgb(12, 34, 200);
+    border-color: rgb(39, 16, 186);
 }
 
 .btn-primary:hover {
-    background-color: rgb(104 50 199);
-    border-color: rgb(104 50 199);
+    background-color: rgb(12, 46, 118);
+    border-color: rgb(27, 28, 114);
 }
 
 .btn-dark {
-    background-color: rgb(124 58 237);
-    border-color: rgb(124 58 237);
+    background-color: rgb(20, 60, 153);
+    border-color: rgb(3, 19, 239);
 }
 
 .btn-dark:hover {
-    background-color: rgb(104 50 199);
-    border-color: rgb(104 50 199);
+    background-color: rgb(11, 36, 127);
+    border-color: rgb(55, 31, 126);
 }
 
 .task-card .delete-task {
@@ -212,7 +211,7 @@ input[name="taskStatus"] {
     color: #939393;
 }
 
-/* Modal styles */
+
 .modal {
     display: none;
     position: fixed;
@@ -254,7 +253,7 @@ input[name="taskStatus"] {
     cursor: pointer;
 }
 
-/* Form styles */
+
 .form-control {
     margin-bottom: 10px;
 }
@@ -263,7 +262,7 @@ input[name="taskStatus"] {
     margin-right: 10px;
 }
 
-/* Footer styles */
+
 .footer {
     background-color: transparent;
     padding: 0 20px;
@@ -283,14 +282,14 @@ input[name="taskStatus"] {
     color: #333;
 }
 
-/* The switch - the box around the slider */
+
 .switch {
     display: block;
     --width-of-switch: 3.5em;
     --height-of-switch: 2em;
-    /* size of sliding icon -- sun and moon */
+   
     --size-of-icon: 1.4em;
-    /* it is like a inline-padding of switch */
+    
     --slider-offset: 0.3em;
     position: relative;
     width: var(--width-of-switch);
@@ -298,14 +297,14 @@ input[name="taskStatus"] {
     float: right;
   }
   
-  /* Hide default HTML checkbox */
+ 
   .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
   
-  /* The slider */
+
   .slider {
     position: absolute;
     cursor: pointer;
@@ -340,19 +339,19 @@ input[name="taskStatus"] {
   input:checked + .slider:before {
     left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
     background: #303136;
-    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+    
     box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
   }
 
-/* ------------------ */
+
 
 .editDel{
     background: #eee;
 }
 
-/* Dark theme styles */
+
 body.dark-theme {
-    background: #333;
+    background: #000000;
     color: #fff;
 }
 
@@ -362,11 +361,11 @@ body.dark-theme .task-column {
 }
 
 body.dark-theme .task-card {
-    background: #555;
+    background: #000000;
 }
 
 body.dark-theme .section-heading {
-    background-color: #666;
+    background-color: #000000;
 }
 
 body.dark-theme .footer .text-center {
@@ -375,8 +374,8 @@ body.dark-theme .footer .text-center {
 
 body.dark-theme .btn-primary,
 body.dark-theme .btn-dark {
-    background-color: #666;
-    border-color: #666;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 body.dark-theme .btn-primary:hover,
@@ -386,7 +385,7 @@ body.dark-theme .btn-dark:hover {
 }
 
 body.dark-theme .modal-content{
-    background-color: #444;
+    background-color: #000000;
 }
 
 .bottom-right-buttons{
@@ -414,38 +413,38 @@ body.dark-theme .modal-content{
     }
 }
 
-/* Custom scrollbar styles for WebKit browsers (Chrome, Safari) */
+
 ::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
+    width: 12px; 
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Background of the scrollbar track */
-    border-radius: 10px; /* Rounded corners for the track */
+    background: #f1f1f1; 
+    border-radius: 10px; 
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(104, 50, 199); /* Background color of the scrollbar thumb */
-    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
-    border: 3px solid #f1f1f1; /* Padding around the scrollbar thumb */
+    background-color: rgb(69, 64, 164); 
+    border-radius: 10px; 
+    border: 3px solid #f1f1f1; 
 }
 
-/* Scrollbar styles for Firefox */
+
 html {
-    scrollbar-width: thin; /* Thin scrollbar width */
-    scrollbar-color: rgb(184, 184, 184) #f1f1f1; /* Thumb and track colors */
+    scrollbar-width: thin; 
+    scrollbar-color: rgb(184, 184, 184) #f1f1f1; 
 }
 
-/* Optional: Scrollbar styles for IE/Edge */
+
 body {
-    -ms-overflow-style: scrollbar; /* Show scrollbar for IE/Edge */
+    -ms-overflow-style: scrollbar; 
 }
 
-/* General scrollbar styling for other browsers */
+
 .scrollable-content {
-    overflow-y: scroll; /* Enable vertical scrolling */
-    scrollbar-color: rgb(104, 50, 199) #f1f1f1; /* Thumb and track colors */
-    scrollbar-width: thin; /* Thin scrollbar width */
+    overflow-y: scroll; 
+    scrollbar-color: rgb(63, 61, 196) #f1f1f1;
+    scrollbar-width: thin; 
 }
 
 h5{
