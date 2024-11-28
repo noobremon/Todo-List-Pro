@@ -16,6 +16,8 @@ body {
     padding: 20px;
 }
 
+
+
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -26,6 +28,7 @@ body {
     padding: 0 15px;
     flex: 0 0 33.3333%;
     max-width: 33.3333%;
+    color: #000000;
 }
 
 .text-center {
@@ -43,7 +46,7 @@ body {
 .filename, .ext {
     font-size: 1rem;
     font-weight: 500;
-    color: #b3b3b3;
+    color: #000000;
 }
 
 .section-heading {
@@ -93,6 +96,11 @@ body {
 
 
 .btn-primary {
+    background-color: rgb(24, 50, 156);
+    border-color: rgb(46, 17, 160);
+}
+
+.btn-secondary {
     background-color: rgb(24, 50, 156);
     border-color: rgb(46, 17, 160);
 }
@@ -196,7 +204,7 @@ input[name="taskStatus"] {
 
 .btn-dark:hover {
     background-color: rgb(11, 36, 127);
-    border-color: rgb(55, 31, 126);
+    border-color: rgb(6, 13, 150);
 }
 
 .task-card .delete-task {
@@ -338,55 +346,59 @@ input[name="taskStatus"] {
   
   input:checked + .slider:before {
     left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
-    background: #303136;
+    background: #eef1ff;
     
-    box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+    box-shadow: inset -3px -2px 5px -2px #150cb6, inset -10px -4px 0 0 #a3dafb;
   }
 
 
 
 .editDel{
-    background: #eee;
+    background: #ffffff;
 }
 
 
 body.dark-theme {
     background: #000000;
-    color: #fff;
+    color: #000000;
 }
 
 body.dark-theme .task-column {
     background: transparent;
-    color: #fff;
+    color: #000000;
 }
 
 body.dark-theme .task-card {
-    background: #000000;
+    background: #ffffff;
 }
 
 body.dark-theme .section-heading {
-    background-color: #000000;
+    background-color: #ffffff;
 }
 
 body.dark-theme .footer .text-center {
-    color: #ddd;
+    color: #000000;
 }
 
 body.dark-theme .btn-primary,
 body.dark-theme .btn-dark {
-    background-color: #000000;
+    background-color: #3509ae;
     border-color: #000000;
 }
 
 body.dark-theme .btn-primary:hover,
 body.dark-theme .btn-dark:hover {
-    background-color: #555;
-    border-color: #555;
+    background-color: #240acd;
+    border-color: #000000;
 }
 
 body.dark-theme .modal-content{
-    background-color: #000000;
+    background-color: #400bb1;
 }
+
+ body.dark-theme .filename{
+    color: #ffffff;
+ }
 
 .bottom-right-buttons{
     display: flex;
@@ -424,7 +436,7 @@ body.dark-theme .modal-content{
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(69, 64, 164); 
+    background-color: rgb(12, 29, 186); 
     border-radius: 10px; 
     border: 3px solid #f1f1f1; 
 }
