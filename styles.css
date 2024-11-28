@@ -101,8 +101,8 @@ body {
 }
 
 .btn-secondary {
-    background-color: rgb(24, 50, 156);
-    border-color: rgb(46, 17, 160);
+    background-color: rgb(207, 27, 27);
+    border-color: rgb(0, 0, 0);
 }
 
 .btn-primary:hover {
@@ -193,8 +193,8 @@ input[name="taskStatus"] {
 }
 
 .btn-primary:hover {
-    background-color: rgb(12, 46, 118);
-    border-color: rgb(27, 28, 114);
+    background-color: rgb(27, 73, 209);
+    border-color: rgb(0, 0, 0);
 }
 
 .btn-dark {
